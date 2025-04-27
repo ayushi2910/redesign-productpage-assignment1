@@ -1,27 +1,20 @@
-import { BrowserRouter } from 'react-router-dom'
-import Theme from '@/components/template/Theme'
-import Layout from '@/components/layouts'
-import { AuthProvider } from '@/auth'
-import Views from '@/views'
-import appConfig from './configs/app.config'
-import './locales'
-
-if (appConfig.enableMock) {
-    import('./mock')
-}
+import { motion } from "framer-motion";
+import Home from "./views/Home"; // importing the Home page
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
-    return (
-        <Theme>
-            <BrowserRouter>
-                <AuthProvider>
-                    <Layout>
-                        <Views />
-                    </Layout>
-                </AuthProvider>
-            </BrowserRouter>
-        </Theme>
-    )
+  return (
+    <BrowserRouter>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="font-poppins bg-gray-50 text-gray-900"
+      >
+        <Home />
+      </motion.div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
